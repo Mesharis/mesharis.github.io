@@ -1,11 +1,11 @@
 {
-    "name": "live_channel",
-    "short_name": "live_channel",
+    "name": "bigstories",
+    "short_name": "bigstories",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "live project.",
+    "description": "big Stories .",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
