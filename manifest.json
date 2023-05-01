@@ -1,11 +1,11 @@
 {
-    "name": "demo_slot",
-    "short_name": "demo_slot",
+    "name": "live_channel",
+    "short_name": "live_channel",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "live project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
