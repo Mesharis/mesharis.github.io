@@ -14,22 +14,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Resume',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.grey,
       ),
       home: const MyHomePage(),
@@ -39,15 +29,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -68,12 +49,6 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -246,8 +221,9 @@ class _MyHomePageState extends State<MyHomePage>
                       CarouselSlider(
                         carouselController: buttonCarouselController,
                         options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height *
-                                (250 / 812),
+                            autoPlayInterval:const Duration(seconds: 15),
+                            autoPlayAnimationDuration:const Duration(milliseconds: 600),
+                            height: MediaQuery.of(context).size.height * (250 / 812),
                             enableInfiniteScroll: true,
                             autoPlay: true,
                             viewportFraction: 1),
@@ -255,32 +231,25 @@ class _MyHomePageState extends State<MyHomePage>
                           AdsModel(
                               image: 'lib/HealthE_club.png',
                               onTap: () {},
-                              dec:
-                                  'Health E- club'),
+                              dec: 'Health E- club'),
                           AdsModel(
                               image: 'lib/Get-Tor.png',
                               onTap: () {},
-                              dec:
-                                  'Get tor'),
+                              dec: 'Get tor'),
                           AdsModel(
                               image: 'lib/FAZAA.png',
                               onTap: () {},
                               dec: 'Fazaa'),
                           AdsModel(
-                              image: 'lib/slot.png',
-                              onTap: () {},
-                              dec:
-                                  'Slot'),
+                              image: 'lib/slot.png', onTap: () {}, dec: 'Slot'),
                           AdsModel(
                               image: 'lib/Call.png',
                               onTap: () {},
-                              dec:
-                                  'Call Sample'),
+                              dec: 'Call Sample'),
                           AdsModel(
                               image: 'lib/payment.png',
                               onTap: () {},
-                              dec:
-                              'Electronic payments'),
+                              dec: 'Electronic payments'),
                         ]),
                       ),
                       Row(
@@ -322,7 +291,7 @@ class _MyHomePageState extends State<MyHomePage>
             ],
           ),
         ));
-  }
+}
 
   onMenuItemSelected(context, int value) {
     popupMenuItemIndex = value;
@@ -332,7 +301,6 @@ class _MyHomePageState extends State<MyHomePage>
       openPdfFromUrl();
     }
   }
-
   PopupMenuItem buildPopupMenuItem({required String title, dynamic icon, required int position}) {
     return PopupMenuItem(
       value: position,
@@ -343,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  email() async {
+  void email() async {
     String? encodeQueryParameters(Map<String, String> params) {
       return params.entries
           .map((MapEntry<String, String> e) =>
@@ -351,7 +319,6 @@ class _MyHomePageState extends State<MyHomePage>
           .join('&');
     }
 
-// ···
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
       path: 'Mesharisulimanalwehaibi@gmail.com',
@@ -360,16 +327,11 @@ class _MyHomePageState extends State<MyHomePage>
         'body': 'Hi!',
       }),
     );
-
     launchUrl(emailLaunchUri);
-
     if (await launchUrl(emailLaunchUri)) {
-      //email app opened
       const snackBar = SnackBar(
         content: Text('email app opened'),
       );
-      // Find the ScaffoldMessenger in the widget tree
-      // and use it to show a SnackBar.
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else {
       Clipboard.setData(
@@ -377,19 +339,14 @@ class _MyHomePageState extends State<MyHomePage>
       const snackBar = SnackBar(
         content: Text('copy email done'),
       );
-      // Find the ScaffoldMessenger in the widget tree
-      // and use it to show a SnackBar.
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      //email app is not opened
     }
   }
-
   void openPdfFromUrl() {
-    var googleDocsUrl = 'lib/Resume.pdf';
+    var googleDocsUrl = 'assets/lib/Resume.pdf';
     final Uri uri = Uri.parse(googleDocsUrl);
     launchUrl(uri);
   }
-
   void _scrollDown() {
     _controller.animateTo(
       _controller.position.maxScrollExtent,
@@ -397,7 +354,6 @@ class _MyHomePageState extends State<MyHomePage>
       curve: Curves.fastOutSlowIn,
     );
   }
-
   List<Widget> sliderCells(List<AdsModel> ads) {
     List<Widget> items = [];
     var itemsCount = ads.length - 1;
@@ -406,34 +362,33 @@ class _MyHomePageState extends State<MyHomePage>
         builder: (BuildContext context) {
           return Stack(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: ads[i].onTap,
-                    child: Container(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15)),
+              InkWell(
+                  onTap: ads[i].onTap,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15)),
+                        ),
+                        child: Image.asset(
+                          ads[i].image,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      child: Image.asset(
-                        ads[i].image,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(ads[i].dec),
-                      ],
-                    ),
-                  )
-                ],
-              )
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(ads[i].dec),
+                          ],
+                        ),
+                      )
+                    ],
+                  ))
             ],
           );
         },
@@ -443,13 +398,12 @@ class _MyHomePageState extends State<MyHomePage>
   }
 }
 
+
 enum Options {
   Send_Email,
   download_resume,
 }
-
 AdsModel adsModelFromJson(String str) => AdsModel.fromJson(json.decode(str));
-
 class AdsModel {
   AdsModel({
     required this.image,

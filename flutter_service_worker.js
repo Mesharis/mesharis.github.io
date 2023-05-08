@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "5fc10240b73452c6a64964c44206397c",
-"index.html": "7a6fdff8887238c270618e190418f065",
-"/": "7a6fdff8887238c270618e190418f065",
-"main.dart.js": "f75788c71eab6f070ca39425e9a6dfbf",
+"index.html": "e274b3c5941ab063436b0b3068d2ee27",
+"/": "e274b3c5941ab063436b0b3068d2ee27",
+"main.dart.js": "16fbc2ef70ef9d6a4b409490be312ee2",
 "flutter.js": "a85fcf6324d3c4d3ae3be1ae4931e9c5",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
@@ -24,7 +24,7 @@ const RESOURCES = {
 "assets/lib/Resume.pdf": "10ce1466c5a505ffa9980ac8a642517d",
 "assets/lib/payment.png": "fdcefb2771f49850daf9f0729eb8a804",
 "assets/lib/Get-Tor.png": "cc5516836ee9735c4e378eea1fd63849",
-"assets/lib/main.dart": "78337584963bb1331be2166b7ad5c125",
+"assets/lib/main.dart": "290aac3c0b568da2cea86fc39a29f5b7",
 "assets/lib/Call.png": "e2dd4d1183b73b3bf1366825a97a3341",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
